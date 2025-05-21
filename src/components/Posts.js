@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getPosts, deletePost} from '../services/postService';
+import PostForm from './postFrom';
 
 export default function Posts() {
     const [posts, setPosts] = useState([]);
@@ -9,6 +10,7 @@ export default function Posts() {
         getPosts()
           .then((result) => {
             setPosts(result.data)
+
           })
           .catch((err) => {
             console.error(err);
@@ -28,7 +30,7 @@ export default function Posts() {
     return (
         <div>
             <h1>Posts</h1>
-
+             <PostForm posts={posts} setPosts={setPosts}/>
             <ul>
                 {posts.map((post) => (
                     <li key={post.id}>
