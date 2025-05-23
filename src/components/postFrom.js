@@ -40,7 +40,7 @@ export default function PostForm({
 
       updatePost(editPost.id, {title, body})
             .then((response) => {
-              setPosts(posts.map(post => (post.id === editPost.id? response.id : post))); 
+              setPosts(posts.map(post => (post.id === editPost.id ? response.data : post))); 
           })
           .catch((err) => {
             console.error(err);
